@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+
+  "name": "Ctrl F++",
+  "description": "This extension allows the user to search for complex multi-line and multi-element text on the page",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "assets/images/find.ico",
+    "default_popup": "popup.html",
+    "default_title": "Ctrl F++"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["markjs/mark.min.js", "myscript.js"],
+      "css": ["mystyles.css"]
+    }
+  ]
+}
