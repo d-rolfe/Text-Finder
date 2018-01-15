@@ -5,6 +5,17 @@
   "description": "This extension allows the user to search for complex multi-line and multi-element text on the page",
   "version": "1.0",
 
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "windows": "Ctrl+Shift+F",
+        "mac": "Command+Shift+F",
+        "chromeos": "Ctrl+Shift+F",
+        "linux": "Ctrl+Shift+F"
+      }
+    }
+  },
+
   "browser_action": {
     "default_icon": "assets/images/find.ico",
     "default_popup": "popup.html",

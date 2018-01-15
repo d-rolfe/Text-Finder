@@ -1,4 +1,10 @@
-console.log("content script loaded.");
+var markInstance = new Mark(document.querySelector("body"));
+var options = {
+	separateWordSearch: false, 
+	accuracy: "partially", 
+	acrossElements: true
+}
+
 chrome.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
 		console.log(sender.tab ?
@@ -8,17 +14,14 @@ chrome.runtime.onMessage.addListener(
 		if (request.action == "findText") {
 			var text = request.textToFind;
 			console.log('searching for: ' + text);
-
-			var instance = new Mark(document.querySelector("body"));
-			instance.mark(text, {separateWordSearch: false, accuracy: "exactly", acrossElements: true});
-			/*var innerHTML = document.body.innerHTML;
-			var index = innerHTML.indexOf(text);
-			console.log(index);
-			if (index >= 0) {
-				innerHTML = innerHTML.substring(0,index) + "<span class='highlight'>" + innerHTML.substring(index,index+text.length) + "</span>" + innerHTML.substring(index + text.length);
-				document.body.innerHTML = innerHTML;
-				console.log('highlighted text!');
-			}*/
+			markInstance.unmark({
+				done: function() {
+					markInstance.mark(text, options);
+				}
+			})
+			console.log('got here.');
             sendResponse({answer: "searched for text"});
 		}
 	});
+
+console.log("content script loaded.");
