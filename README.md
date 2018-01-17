@@ -1,7 +1,7 @@
 # Text-Finder
 a chrome extension for enhanced text finding
 =========================================================================================================================================
-This extension provides enhanced text finding beyond normal ctrl+F in that it will find text that is separated by HTML elements e.g. across <p> tags or <li> tags.
+This extension provides enhanced text finding beyond normal ctrl+F in that it will find text that is separated by HTML elements e.g. across p tags or li tags.
 
 USE
 =========================================================================================================================================
