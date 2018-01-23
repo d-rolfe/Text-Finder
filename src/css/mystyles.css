@@ -1,6 +1,36 @@
-<style>
+body {
+    margin: 10px;
+    white-space: nowrap;
+  }
+
+  h1 {
+    font-size: 15px;
+  }
+
+  #container {
+    align-items: center;
+    /*display: flex;*/
+    justify-content: space-between;
+  }
+
+  div.text label {
+    margin: 0;
+    padding: 0;
+    margin-left: 20px;
+    display: block;
+    font-size: 100%;
+  }
+
+  div.text input,
+  div.text textarea {
+    margin: 0;
+    padding: 0;
+    margin-left: 20px;
+    margin-bottom: 1.25em;
+    display: block;
+  }
+
 .highlight
 {
 background-color:yellow;
-}
-</style>
+};

@@ -1,7 +1,7 @@
 var markInstance = new Mark(document.querySelector("body"));
 var options = {
-	separateWordSearch: false, 
-	accuracy: "partially", 
+	separateWordSearch: false,
+	accuracy: "partially",
 	acrossElements: true
 }
 
@@ -13,13 +13,15 @@ chrome.runtime.onMessage.addListener(
 		console.log(request);
 		if (request.action == "findText") {
 			var text = request.textToFind;
-			console.log('searching for: ' + text);
+			options.acrossElements = request.acrossElements;
+			options.caseSensitive = request.caseSensitive;
+			options.separateWordSearch = request.separateWordSearch;
+			options.accuracy = request.accuracy;
 			markInstance.unmark({
 				done: function() {
 					markInstance.mark(text, options);
 				}
-			})
-			console.log('got here.');
+			});
             sendResponse({answer: "searched for text"});
 		}
 	});

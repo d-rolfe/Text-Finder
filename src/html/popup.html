@@ -5,61 +5,51 @@
  value "popup.html".
  -->
 <html>
-  <head>
-    <title>Ctrl F++ Popup</title>
-    <style type="text/css">
-      body {
-        margin: 10px;
-        white-space: nowrap;
-      }
 
-      h1 {
-        font-size: 15px;
-      }
+<head>
+  <title>Ctrl F++ Popup</title>
+  <script src="../js/jquery-3.2.1.js"></script>
+  <script src="../js/popup.js"></script>
+</head>
 
-      #container {
-        align-items: center;
-        /*display: flex;*/
-        justify-content: space-between;
-      }
-      div.text label { 
-        margin: 0; 
-        padding: 0; 
-        margin-left: 20px; 
-        display: block; 
-        font-size: 100%; 
-      } 
-
-      div.text input, 
-      div.text textarea { 
-        margin: 0; 
-        padding: 0; 
-        margin-left: 20px; 
-        margin-bottom: 1.25em; 
-        display: block; 
-      } 
-    </style>
-
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
-    -->
-    <script src="../js/jquery-3.2.1.js"></script>
-    <script src="../js/popup.js"></script>
-  </head>
-
-  <body>
-    <h1>Ctrl F++ Text Finder</h1>
-    <div id="container">
-      <button id="findBtn">Find</button>
-      <div class="text"> 
-        <form>
-          <label for="textToFind1">Text to find:</label> 
-          <textarea rows="20" cols="50" name="comment" id="textToFind1" autofocus></textarea>
-        </form>
+<body>
+  <h1>Ctrl F++ Text Finder</h1>
+  <div id="container">
+    <form>
+      <div class="text">
+        <label for="textToFind1">Search:</label>
+        <textarea rows="20" cols="50" name="comment" id="textToFind1" autofocus></textarea>
       </div>
-    </div>
-  </body>
+      <fieldset>
+        <div class="options">
+          <legend>Options</legend>
+          <div>
+            <input type="checkbox" id="acrossElements" name="acrossElements" value="acrossElements" checked>
+            <label for="acrossElements">Across HTML Elements</label>
+          </div>
+          <div>
+            <input type="checkbox" id="caseSensitive" name="caseSensitive" value="caseSensitive">
+            <label for="caseSensitive">Case Sensitive</label>
+          </div>
+          <div>
+            <input type="checkbox" id="separateWordSearch" name="separateWordSearch" value="separateWordSearch">
+            <label for="separateWordSearch">Separate Word Search</label>
+          </div>
+          <div>
+            <label for="accuracy">Accuracy</label>
+            <select id="accuracy" name="accuracy">
+              <option value="partially">Partially</option>
+              <option value="complementary">Complementary</option>
+              <option value="exactly">Exactly</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+      <div>
+        <button id="findBtn" type="submit">Find</button>
+      </div>
+    </form>
+  </div>
+</body>
+
 </html>

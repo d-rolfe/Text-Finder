@@ -2,6 +2,10 @@ function findText() {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     var request = {action: "findText"};
     request.textToFind = document.getElementById("textToFind1").value;
+    request.acrossElements = document.getElementById("acrossElements").checked;
+    request.caseSensitive = document.getElementById("caseSensitive").checked;
+    request.separateWordSearch = document.getElementById("separateWordSearch").checked;
+    request.accuracy = document.getElementById("accuracy").value;
     chrome.tabs.sendMessage(tabs[0].id, request, function(response) {
       console.log("got response from content script");
       console.log(response);
@@ -17,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// uuhhh 2
 //setup before functions
   /*var typingTimer;                //timer identifier
   var doneTypingInterval = 5000;  //time in ms, 5 second for example
